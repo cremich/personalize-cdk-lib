@@ -12,10 +12,10 @@
     "module": "CommonJS",
     "noEmitOnError": false,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "strict": true,
@@ -27,7 +27,8 @@
   "include": [
     ".projenrc.js",
     "src/**/*.ts",
-    "test/**/*.ts"
+    "test/**/*.ts",
+    "src/**/loaders.d.ts"
   ],
   "exclude": [
     "node_modules"

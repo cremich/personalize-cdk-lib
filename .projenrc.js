@@ -10,11 +10,18 @@ const project = new awscdk.AwsCdkConstructLibrary({
   eslintOptions: {
     prettier: true,
   },
+  prettier: true,
+  prettierOptions: {
+    ignoreFile: true,
+  },
   dependabot: true,
-  // deps: [],                /* Runtime dependencies of this module. */
+  deps: ["cdk-iam-floyd@0.345.0"],
   devDeps: [
+    "@aws-sdk/client-s3",
+    "@aws-sdk/client-sfn",
     "@commitlint/cli@16.2.1",
     "@commitlint/config-conventional@16.2.1",
+    "@types/aws-lambda",
     "cz-conventional-changelog@3.3.0",
     "husky@7.0.4",
     "lint-staged@12.3.5",

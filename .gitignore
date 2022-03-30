@@ -41,6 +41,8 @@ junit.xml
 !/.mergify.yml
 !/.github/dependabot.yml
 !/.github/pull_request_template.md
+!/.prettierignore
+!/.prettierrc.json
 !/test/
 !/tsconfig.dev.json
 !/src/
@@ -50,3 +52,5 @@ junit.xml
 .jsii
 tsconfig.json
 !/API.md
+/assets/
+!/src/training/start-training-function.ts
