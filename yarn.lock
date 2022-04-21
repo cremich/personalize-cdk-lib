@@ -4362,32 +4362,13 @@ jsii-rosetta@^1.56.0, jsii-rosetta@^1.57.0:
     workerpool "^6.2.0"
     yargs "^16.2.0"
 
-jsii@1.57.0:
+jsii@1.57.0, jsii@^1.55.1:
   version "1.57.0"
   resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.57.0.tgz#58bf3644065f805b4693f1691bcfb8698aa67507"
   integrity sha512-r9U1+vAfYlKgJ4FnBmf8Fj/VP+ngx/uSi3FxH9BL2KrCS0PBcHml5YXsH9pBGfCSrDQvOxULlONnw+RqEbI1Lw==
   dependencies:
     "@jsii/check-node" "1.57.0"
     "@jsii/spec" "^1.57.0"
-    case "^1.6.3"
-    chalk "^4"
-    deep-equal "^2.0.5"
-    fs-extra "^9.1.0"
-    log4js "^6.4.4"
-    semver "^7.3.5"
-    semver-intersect "^1.4.0"
-    sort-json "^2.0.1"
-    spdx-license-list "^6.5.0"
-    typescript "~3.9.10"
-    yargs "^16.2.0"
-
-jsii@^1.55.1:
-  version "1.56.0"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.56.0.tgz#22de00f37595fc0412e698d01adc9076c587addf"
-  integrity sha512-G1etNH8JRSfSlgicTBYsi/yVUxxreMnWYwAtXN6BH/sIiv5o6gFnYkumF2x+OTqmQAkKj1NxSssn5icvOrONzA==
-  dependencies:
-    "@jsii/check-node" "1.56.0"
-    "@jsii/spec" "^1.56.0"
     case "^1.6.3"
     chalk "^4"
     deep-equal "^2.0.5"
