@@ -1,4 +1,5 @@
 const { awscdk } = require("projen");
+const { NpmAccess } = require("projen/lib/javascript");
 const project = new awscdk.AwsCdkConstructLibrary({
   description: "Amazon Personalize Construct Library for CDK",
   author: "Christian Bonzelet",
@@ -12,6 +13,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   prerelease: "alpha",
   codeCov: true,
   name: "@cremich/personalize",
+  npmAccess: NpmAccess.PUBLIC,
   prettier: true,
   repositoryUrl:
     "https://github.com/christian.bonzelet/personalize-cdk-lib.git",
