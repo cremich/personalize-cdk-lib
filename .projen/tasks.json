@@ -87,7 +87,7 @@
       "description": "Only compile",
       "steps": [
         {
-          "exec": "jsii --silence-warnings=reserved-word --no-fix-peer-dependencies"
+          "exec": "jsii --silence-warnings=reserved-word"
         }
       ]
     },
@@ -202,7 +202,8 @@
       "name": "release",
       "description": "Prepare a release from \"main\" branch",
       "env": {
-        "RELEASE": "true"
+        "RELEASE": "true",
+        "PRERELEASE": "alpha"
       },
       "steps": [
         {
@@ -268,9 +269,9 @@
         }
       ]
     },
-    "upgrade-projen": {
-      "name": "upgrade-projen",
-      "description": "upgrade projen",
+    "upgrade": {
+      "name": "upgrade",
+      "description": "upgrade dependencies",
       "env": {
         "CI": "0"
       },
@@ -279,25 +280,25 @@
           "exec": "yarn upgrade npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen'"
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='@commitlint/cli,@commitlint/config-conventional,aws-cdk-lib,constructs,cz-conventional-changelog,husky,lint-staged'"
         },
         {
-          "exec": "npm-check-updates --dep optional --upgrade --target=minor --filter='projen'"
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='@commitlint/cli,@commitlint/config-conventional,aws-cdk-lib,constructs,cz-conventional-changelog,husky,lint-staged'"
         },
         {
-          "exec": "npm-check-updates --dep peer --upgrade --target=minor --filter='projen'"
+          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='@commitlint/cli,@commitlint/config-conventional,aws-cdk-lib,constructs,cz-conventional-changelog,husky,lint-staged'"
         },
         {
-          "exec": "npm-check-updates --dep prod --upgrade --target=minor --filter='projen'"
+          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='@commitlint/cli,@commitlint/config-conventional,aws-cdk-lib,constructs,cz-conventional-changelog,husky,lint-staged'"
         },
         {
-          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --filter='projen'"
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='@commitlint/cli,@commitlint/config-conventional,aws-cdk-lib,constructs,cz-conventional-changelog,husky,lint-staged'"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade projen"
+          "exec": "yarn upgrade"
         },
         {
           "exec": "npx projen"
@@ -312,7 +313,7 @@
       "description": "Watch & compile in the background",
       "steps": [
         {
-          "exec": "jsii -w --silence-warnings=reserved-word --no-fix-peer-dependencies"
+          "exec": "jsii -w --silence-warnings=reserved-word"
         }
       ]
     }

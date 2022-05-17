@@ -1,23 +1,29 @@
 const { awscdk } = require("projen");
 const project = new awscdk.AwsCdkConstructLibrary({
+  description: "Amazon Personalize Construct Library for CDK",
   author: "Christian Bonzelet",
-  authorAddress: "christian.bonzelet@gmail.com",
-  cdkVersion: "2.17.0",
+  authorEmail: "christian.bonzelet@gmail.com",
+  authorUrl: "https://www.linkedin.com/in/christian-bonzelet/",
+  authorOrganization: false,
+  bugsUrl: "https://github.com/cremich/personalize-cdk-lib/issues",
+  keywords: ["aws", "cdk", "personalize", "personalization"],
+  cdkVersion: "2.24.1",
   defaultReleaseBranch: "main",
+  prerelease: "alpha",
+  codeCov: true,
   name: "@cremich/personalize",
+  prettier: true,
   repositoryUrl:
     "https://github.com/christian.bonzelet/personalize-cdk-lib.git",
   eslintOptions: {
     prettier: true,
   },
-  dependabot: true,
-  // deps: [],                /* Runtime dependencies of this module. */
   devDeps: [
-    "@commitlint/cli@16.2.1",
-    "@commitlint/config-conventional@16.2.1",
+    "@commitlint/cli@17.0.0",
+    "@commitlint/config-conventional@17.0.0",
     "cz-conventional-changelog@3.3.0",
-    "husky@7.0.4",
-    "lint-staged@12.3.5",
+    "husky@8.0.1",
+    "lint-staged@12.4.1",
   ],
   scripts: {
     precommit: "lint-staged",
