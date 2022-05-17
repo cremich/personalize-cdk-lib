@@ -2,12 +2,12 @@
   "dependencies": [
     {
       "name": "@commitlint/cli",
-      "version": "16.2.1",
+      "version": "17.0.0",
       "type": "build"
     },
     {
       "name": "@commitlint/config-conventional",
-      "version": "16.2.1",
+      "version": "17.0.0",
       "type": "build"
     },
     {
@@ -16,7 +16,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^12",
+      "version": "^14",
       "type": "build"
     },
     {
@@ -31,7 +31,7 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "2.17.0",
+      "version": "2.24.1",
       "type": "build"
     },
     {
@@ -71,16 +71,17 @@
     },
     {
       "name": "husky",
-      "version": "7.0.4",
-      "type": "build"
-    },
-    {
-      "name": "jest",
+      "version": "8.0.1",
       "type": "build"
     },
     {
       "name": "jest-junit",
       "version": "^13",
+      "type": "build"
+    },
+    {
+      "name": "jest",
+      "version": "^27",
       "type": "build"
     },
     {
@@ -105,7 +106,7 @@
     },
     {
       "name": "lint-staged",
-      "version": "12.3.5",
+      "version": "12.4.1",
       "type": "build"
     },
     {
@@ -128,6 +129,7 @@
     },
     {
       "name": "ts-jest",
+      "version": "^27",
       "type": "build"
     },
     {
@@ -136,7 +138,7 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "^2.17.0",
+      "version": "^2.24.1",
       "type": "peer"
     },
     {
