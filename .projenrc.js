@@ -15,8 +15,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   name: "@cremich/personalize",
   npmAccess: NpmAccess.PUBLIC,
   prettier: true,
-  repositoryUrl:
-    "https://github.com/christian.bonzelet/personalize-cdk-lib.git",
+  repositoryUrl: "https://github.com/cremich/personalize-cdk-lib.git",
   eslintOptions: {
     prettier: true,
   },
