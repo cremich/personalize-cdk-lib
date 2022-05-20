@@ -18,6 +18,11 @@ export interface DatasetProps {
    * The dataset group this dataset is associated with
    */
   readonly datasetGroup: IDatasetGroup;
+
+  /**
+   * The ARN of a already created custom defined dataset schema
+   */
+  readonly customSchemaArn?: string;
 }
 
 /**
@@ -47,12 +52,15 @@ export class Dataset extends DatasetBase {
       physicalName: name,
     });
 
-    const schema = this.createDefaultSchema(type, props.datasetGroup);
+    const schemaArn = props.customSchemaArn
+      ? props.customSchemaArn
+      : this.createDefaultSchema(type, props.datasetGroup).attrSchemaArn;
+
     const dataset = new personalize.CfnDataset(this, "Resource", {
       datasetGroupArn: props.datasetGroup.arn,
       datasetType: type,
       name: name,
-      schemaArn: schema.attrSchemaArn,
+      schemaArn: schemaArn,
     });
 
     this.arn = dataset.attrDatasetArn;

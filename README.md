@@ -33,13 +33,13 @@ npm install @cremich/personalize
 
 ### Getting started
 
-In order to create your recommendation engine, you start by provisioning either a custom or domain specific dataset group. Once you create your Dataset Group, you can add the required datasets by calling for example
+In order to create your recommendation engine, you start by provisioning either a custom or domain specific Dataset Group. Once you create your Dataset Group, you can add the required datasets by calling for example
 
 - `addInteractionsDataset()`.
 - `addItemsDataset()`.
 - `addUsersDataset()`.
 
-This will create a new dataset within your Dataset group with a default schema depending on the domain and dataset type combination. For a detailed description of the default dataset schemas, please review the [official Amazon Personalize documentation](https://docs.aws.amazon.com/personalize/latest/dg/how-it-works-dataset-schema.html).
+This will create a new dataset within your Dataset Group with a default schema depending on the domain and dataset type combination. For a detailed description of the default dataset schemas, please review the [official Amazon Personalize documentation](https://docs.aws.amazon.com/personalize/latest/dg/how-it-works-dataset-schema.html).
 
 ```javascript
 import { DatasetGroup } from "@cremich/personalize";
@@ -51,4 +51,20 @@ const dsg = new DatasetGroup(this, "vod", {
 });
 
 dsg.addInteractionsDataset();
+```
+
+If you want to use a custom or external defined dataset schema, you can set the ARN of your schema while adding the dataset to your dataset Group.
+
+```javascript
+import { DatasetGroup } from "@cremich/personalize";
+import { PersonalizeDomain } from "@cremich/personalize/lib/types";
+
+const dsg = new DatasetGroup(this, "vod", {
+  name: "vod-dataset-group",
+  domain: PersonalizeDomain.VIDEO_ON_DEMAND,
+});
+
+dsg.addInteractionsDataset(
+  "arn:aws:personalize:eu-central-1:1234567890:schema/my-external-schema"
+);
 ```

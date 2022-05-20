@@ -56,31 +56,40 @@ export class DatasetGroup extends DatasetGroupBase {
 
   /**
    * Creates a new interaction dataset in this dataset group
+   * @param schemaArn the arn of a custom and external defined dataset schema
+   * @returns a new created interactions dataset
    */
-  public addInteractionsDataset(): IDataset {
+  public addInteractionsDataset(schemaArn?: string): IDataset {
     return new Dataset(this, "interactions", {
       type: DatasetType.INTERACTIONS,
       datasetGroup: this,
+      customSchemaArn: schemaArn,
     });
   }
 
   /**
    * Creates a new items dataset in this dataset group
+   * @param schemaArn the arn of a custom and external defined dataset schema
+   * @returns a new created items dataset
    */
-  public addItemsDataset(): IDataset {
+  public addItemsDataset(schemaArn?: string): IDataset {
     return new Dataset(this, "items", {
       type: DatasetType.ITEMS,
       datasetGroup: this,
+      customSchemaArn: schemaArn,
     });
   }
 
   /**
    * Creates a new users dataset in this dataset group
+   * @param schemaArn the arn of a custom and external defined dataset schema
+   * @returns a new created users dataset
    */
-  public addUsersDataset(): IDataset {
+  public addUsersDataset(schemaArn?: string): IDataset {
     return new Dataset(this, "users", {
       type: DatasetType.USERS,
       datasetGroup: this,
+      customSchemaArn: schemaArn,
     });
   }
 }

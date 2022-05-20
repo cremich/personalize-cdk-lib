@@ -137,4 +137,67 @@ describe("Dataset Group", () => {
       Name: "users",
     });
   });
+
+  test("Users dataset with external schema is created", () => {
+    const datasetgroup = new DatasetGroup(stack, "dataset-group", {
+      name: "dsg",
+    });
+    const schemaArn =
+      "arn:aws:personalize:eu-central-1:1234567890:schema/my-external-schema";
+
+    datasetgroup.addUsersDataset(schemaArn);
+
+    const assert = assertions.Template.fromStack(stack);
+    assert.hasResourceProperties("AWS::Personalize::Dataset", {
+      DatasetGroupArn: {
+        "Fn::GetAtt": ["datasetgroup4EB6CA0F", "DatasetGroupArn"],
+      },
+      DatasetType: "Users",
+      Name: "users",
+      SchemaArn:
+        "arn:aws:personalize:eu-central-1:1234567890:schema/my-external-schema",
+    });
+  });
+
+  test("Items dataset with external schema is created", () => {
+    const datasetgroup = new DatasetGroup(stack, "dataset-group", {
+      name: "dsg",
+    });
+    const schemaArn =
+      "arn:aws:personalize:eu-central-1:1234567890:schema/my-external-schema";
+
+    datasetgroup.addItemsDataset(schemaArn);
+
+    const assert = assertions.Template.fromStack(stack);
+    assert.hasResourceProperties("AWS::Personalize::Dataset", {
+      DatasetGroupArn: {
+        "Fn::GetAtt": ["datasetgroup4EB6CA0F", "DatasetGroupArn"],
+      },
+      DatasetType: "Items",
+      Name: "items",
+      SchemaArn:
+        "arn:aws:personalize:eu-central-1:1234567890:schema/my-external-schema",
+    });
+  });
+
+  test("Interactions dataset with external schema is created", () => {
+    const datasetgroup = new DatasetGroup(stack, "dataset-group", {
+      name: "dsg",
+    });
+    const schemaArn =
+      "arn:aws:personalize:eu-central-1:1234567890:schema/my-external-schema";
+
+    datasetgroup.addInteractionsDataset(schemaArn);
+
+    const assert = assertions.Template.fromStack(stack);
+    assert.hasResourceProperties("AWS::Personalize::Dataset", {
+      DatasetGroupArn: {
+        "Fn::GetAtt": ["datasetgroup4EB6CA0F", "DatasetGroupArn"],
+      },
+      DatasetType: "Interactions",
+      Name: "interactions",
+      SchemaArn:
+        "arn:aws:personalize:eu-central-1:1234567890:schema/my-external-schema",
+    });
+  });
 });

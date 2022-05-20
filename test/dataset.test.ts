@@ -258,4 +258,24 @@ describe("Dataset", () => {
       Domain: "ECOMMERCE",
     });
   });
+
+  test("Custom defined schema can be referenced in new dataset", () => {
+    const datasetgroup = new DatasetGroup(stack, "dataset-group", {
+      name: "dsg",
+    });
+
+    const schemaArn =
+      "arn:aws:personalize:eu-central-1:1234567890:schema/my-external-schema";
+
+    new Dataset(stack, "dataset", {
+      datasetGroup: datasetgroup,
+      type: DatasetType.INTERACTIONS,
+      customSchemaArn: schemaArn,
+    });
+
+    const assert = assertions.Template.fromStack(stack);
+    assert.hasResourceProperties("AWS::Personalize::Dataset", {
+      SchemaArn: schemaArn,
+    });
+  });
 });

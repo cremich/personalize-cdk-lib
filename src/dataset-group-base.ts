@@ -50,16 +50,22 @@ export abstract class DatasetGroupBase
 
   /**
    * Adds an interaction dataset to this dataset group
+   * @param schemaArn the arn of a custom and external defined dataset schema
+   * @returns an interaction dataset
    */
-  public abstract addInteractionsDataset(): IDataset;
+  public abstract addInteractionsDataset(schemaArn?: string): IDataset;
 
   /**
    * Adds an items dataset to this dataset group
+   * @param schemaArn the arn of a custom and external defined dataset schema
+   * @returns an item dataset
    */
-  public abstract addItemsDataset(): IDataset;
+  public abstract addItemsDataset(schemaArn?: string): IDataset;
 
   /**
    * Adds an users dataset to this dataset group
+   * @param schemaArn the arn of a custom and external defined dataset schema
+   * @returns an users dataset
    */
-  public abstract addUsersDataset(): IDataset;
+  public abstract addUsersDataset(schemaArn?: string): IDataset;
 }
