@@ -51,7 +51,7 @@ export abstract class DatasetGroupBase
   /**
    * Adds an interaction dataset to this dataset group
    */
-  public abstract addInteractionDataset(): IDataset;
+  public abstract addInteractionsDataset(): IDataset;
 
   /**
    * Adds an items dataset to this dataset group

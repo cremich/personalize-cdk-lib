@@ -94,7 +94,7 @@ describe("Dataset Group", () => {
     const datasetgroup = new DatasetGroup(stack, "dataset-group", {
       name: "dsg",
     });
-    datasetgroup.addInteractionDataset();
+    datasetgroup.addInteractionsDataset();
 
     const assert = assertions.Template.fromStack(stack);
     assert.hasResourceProperties("AWS::Personalize::Dataset", {

@@ -57,7 +57,7 @@ export class DatasetGroup extends DatasetGroupBase {
   /**
    * Creates a new interaction dataset in this dataset group
    */
-  public addInteractionDataset(): IDataset {
+  public addInteractionsDataset(): IDataset {
     return new Dataset(this, "interactions", {
       type: DatasetType.INTERACTIONS,
       datasetGroup: this,
