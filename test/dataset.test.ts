@@ -105,7 +105,7 @@ describe("Dataset", () => {
     assert.hasResourceProperties("AWS::Personalize::Schema", {
       Name: "custom-Interactions-schema",
       Schema: JSON.stringify(schemaDefinitions.CUSTOM.Interactions),
-      Domain: "CUSTOM",
+      Domain: assertions.Match.absent(),
     });
   });
 
@@ -123,7 +123,7 @@ describe("Dataset", () => {
     assert.hasResourceProperties("AWS::Personalize::Schema", {
       Name: "custom-Items-schema",
       Schema: JSON.stringify(schemaDefinitions.CUSTOM.Items),
-      Domain: "CUSTOM",
+      Domain: assertions.Match.absent(),
     });
   });
 
@@ -141,7 +141,7 @@ describe("Dataset", () => {
     assert.hasResourceProperties("AWS::Personalize::Schema", {
       Name: "custom-Users-schema",
       Schema: JSON.stringify(schemaDefinitions.CUSTOM.Users),
-      Domain: "CUSTOM",
+      Domain: assertions.Match.absent(),
     });
   });
 

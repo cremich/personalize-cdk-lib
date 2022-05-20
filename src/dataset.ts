@@ -1,5 +1,6 @@
 import { aws_personalize as personalize } from "aws-cdk-lib";
 import { Construct } from "constructs";
+import { PersonalizeDomain } from ".";
 import { DatasetBase, DatasetType } from "./dataset-base";
 import { IDatasetGroup } from "./dataset-group-base";
 import schemaDefinitions from "./schema-definitions";
@@ -76,7 +77,10 @@ export class Dataset extends DatasetBase {
     return new personalize.CfnSchema(this, "schema", {
       name: `${datasetGroup.name}-${type}-schema`,
       schema: JSON.stringify(targetDefinition),
-      domain: datasetGroup.domain ? datasetGroup.domain : undefined,
+      domain:
+        datasetGroup.domain == PersonalizeDomain.CUSTOM
+          ? undefined
+          : datasetGroup.domain,
     });
   }
 }

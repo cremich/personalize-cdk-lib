@@ -1,4 +1,5 @@
 import { IResource, Resource } from "aws-cdk-lib";
+import { IDataset } from "./dataset-base";
 import { PersonalizeDomain } from "./types";
 
 /**
@@ -46,4 +47,19 @@ export abstract class DatasetGroupBase
    * The domain of this dataset group
    */
   public abstract readonly domain: PersonalizeDomain;
+
+  /**
+   * Adds an interaction dataset to this dataset group
+   */
+  public abstract addInteractionDataset(): IDataset;
+
+  /**
+   * Adds an items dataset to this dataset group
+   */
+  public abstract addItemsDataset(): IDataset;
+
+  /**
+   * Adds an users dataset to this dataset group
+   */
+  public abstract addUsersDataset(): IDataset;
 }
