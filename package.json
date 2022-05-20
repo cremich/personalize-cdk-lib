@@ -3,7 +3,7 @@
   "description": "Amazon Personalize Construct Library for CDK",
   "repository": {
     "type": "git",
-    "url": "https://github.com/christian.bonzelet/personalize-cdk-lib.git"
+    "url": "https://github.com/cremich/personalize-cdk-lib.git"
   },
   "scripts": {
     "build": "npx projen build",

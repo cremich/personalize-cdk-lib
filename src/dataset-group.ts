@@ -1,5 +1,7 @@
 import { aws_personalize as personalize } from "aws-cdk-lib";
 import { Construct } from "constructs";
+import { Dataset } from "./dataset";
+import { DatasetType, IDataset } from "./dataset-base";
 import { DatasetGroupBase } from "./dataset-group-base";
 import { PersonalizeDomain } from "./types";
 
@@ -43,11 +45,51 @@ export class DatasetGroup extends DatasetGroupBase {
 
     const datasetGroup = new personalize.CfnDatasetGroup(this, "Resource", {
       name: this.physicalName,
-      domain: props.domain,
+      domain:
+        props.domain == PersonalizeDomain.CUSTOM ? undefined : props.domain,
     });
 
     this.arn = datasetGroup.attrDatasetGroupArn;
     this.name = datasetGroup.name;
     this.domain = props.domain ? props.domain : PersonalizeDomain.CUSTOM;
+  }
+
+  /**
+   * Creates a new interaction dataset in this dataset group
+   * @param schemaArn the arn of a custom and external defined dataset schema
+   * @returns a new created interactions dataset
+   */
+  public addInteractionsDataset(schemaArn?: string): IDataset {
+    return new Dataset(this, "interactions", {
+      type: DatasetType.INTERACTIONS,
+      datasetGroup: this,
+      customSchemaArn: schemaArn,
+    });
+  }
+
+  /**
+   * Creates a new items dataset in this dataset group
+   * @param schemaArn the arn of a custom and external defined dataset schema
+   * @returns a new created items dataset
+   */
+  public addItemsDataset(schemaArn?: string): IDataset {
+    return new Dataset(this, "items", {
+      type: DatasetType.ITEMS,
+      datasetGroup: this,
+      customSchemaArn: schemaArn,
+    });
+  }
+
+  /**
+   * Creates a new users dataset in this dataset group
+   * @param schemaArn the arn of a custom and external defined dataset schema
+   * @returns a new created users dataset
+   */
+  public addUsersDataset(schemaArn?: string): IDataset {
+    return new Dataset(this, "users", {
+      type: DatasetType.USERS,
+      datasetGroup: this,
+      customSchemaArn: schemaArn,
+    });
   }
 }

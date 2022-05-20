@@ -4,6 +4,7 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](./CODE_OF_CONDUCT.md)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?)](https://github.com/prettier/prettier)
 [![release](https://github.com/cremich/personalize-cdk-lib/actions/workflows/release.yml/badge.svg)](https://github.com/cremich/personalize-cdk-lib/actions/workflows/release.yml)
+[![codecov](https://codecov.io/gh/cremich/personalize-cdk-lib/branch/main/graph/badge.svg?token=VFbFQQY6Qh)](https://codecov.io/gh/cremich/personalize-cdk-lib)
 
 This Construct Library provides L2 constructs for resources to build your own recommendation engine based on Amazon Personalize using the AWS Cloud Development Kit (CDK).
 
@@ -32,23 +33,38 @@ npm install @cremich/personalize
 
 ### Getting started
 
-In order to create your recommendation engine, you start by provisioning either a custom or domain specific dataset group.
+In order to create your recommendation engine, you start by provisioning either a custom or domain specific Dataset Group. Once you create your Dataset Group, you can add the required datasets by calling for example
+
+- `addInteractionsDataset()`.
+- `addItemsDataset()`.
+- `addUsersDataset()`.
+
+This will create a new dataset within your Dataset Group with a default schema depending on the domain and dataset type combination. For a detailed description of the default dataset schemas, please review the [official Amazon Personalize documentation](https://docs.aws.amazon.com/personalize/latest/dg/how-it-works-dataset-schema.html).
 
 ```javascript
 import { DatasetGroup } from "@cremich/personalize";
 import { PersonalizeDomain } from "@cremich/personalize/lib/types";
 
-new DatasetGroup(this, "custom", {
-  name: "custom-dataset-group",
-});
-
-new DatasetGroup(this, "vod", {
+const dsg = new DatasetGroup(this, "vod", {
   name: "vod-dataset-group",
   domain: PersonalizeDomain.VIDEO_ON_DEMAND,
 });
 
-new DatasetGroup(this, "ecommerce", {
-  name: "ecommerce-dataset-group",
-  domain: PersonalizeDomain.E_COMMERCE,
+dsg.addInteractionsDataset();
+```
+
+If you want to use a custom or external defined dataset schema, you can set the ARN of your schema while adding the dataset to your dataset Group.
+
+```javascript
+import { DatasetGroup } from "@cremich/personalize";
+import { PersonalizeDomain } from "@cremich/personalize/lib/types";
+
+const dsg = new DatasetGroup(this, "vod", {
+  name: "vod-dataset-group",
+  domain: PersonalizeDomain.VIDEO_ON_DEMAND,
 });
+
+dsg.addInteractionsDataset(
+  "arn:aws:personalize:eu-central-1:1234567890:schema/my-external-schema"
+);
 ```
